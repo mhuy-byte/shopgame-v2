@@ -2,48 +2,83 @@ export default function NapGame() {
   return (
     <main className="min-h-screen bg-gray-100">
 
-      <header className="bg-blue-700 text-white p-5">
-        <h1 className="text-3xl font-bold text-center">
-          Nạp Game
+      {/* Header */}
+      <header className="bg-blue-700 text-white py-5 shadow">
+
+        <h1 className="text-center text-3xl font-bold">
+          Tạo đơn nạp game
         </h1>
+
       </header>
 
-      <div className="max-w-xl mx-auto bg-white shadow-xl rounded-2xl p-8 mt-10">
+      <div className="max-w-2xl mx-auto mt-10 bg-white rounded-2xl shadow-xl p-8">
 
-        <label className="block font-bold mb-2">
+        <h2 className="text-2xl font-bold mb-6">
+          Thông tin đơn hàng
+        </h2>
+
+        {/* Game */}
+
+        <label className="font-semibold">
           Chọn game
         </label>
 
-        <select className="w-full border rounded-lg p-3 mb-5">
+        <select className="w-full border rounded-lg p-3 mt-2 mb-5">
+
           <option>Free Fire</option>
+
           <option>Liên Quân Mobile</option>
+
           <option>PUBG Mobile</option>
+
         </select>
 
-        <label className="block font-bold mb-2">
-          ID Game
+        {/* UID */}
+
+        <label className="font-semibold">
+          UID / ID Game
         </label>
 
         <input
-          type="text"
-          placeholder="Nhập ID game"
-          className="w-full border rounded-lg p-3 mb-5"
+          className="w-full border rounded-lg p-3 mt-2 mb-5"
+          placeholder="Ví dụ: 123456789"
         />
 
-        <label className="block font-bold mb-2">
-          Mệnh giá
+        {/* Nhân vật */}
+
+        <label className="font-semibold">
+          Tên nhân vật
         </label>
 
-        <select className="w-full border rounded-lg p-3 mb-6">
-          <option>20.000đ</option>
-          <option>50.000đ</option>
-          <option>100.000đ</option>
-          <option>200.000đ</option>
-          <option>500.000đ</option>
+        <input
+          className="w-full border rounded-lg p-3 mt-2 mb-5"
+          placeholder="Nhập tên nhân vật"
+        />
+
+        {/* Gói */}
+
+        <label className="font-semibold">
+          Gói nạp
+        </label>
+
+        <select className="w-full border rounded-lg p-3 mt-2 mb-8">
+
+          <option>20.000 VNĐ</option>
+
+          <option>50.000 VNĐ</option>
+
+          <option>100.000 VNĐ</option>
+
+          <option>200.000 VNĐ</option>
+
+          <option>500.000 VNĐ</option>
+
         </select>
 
-        <button className="w-full bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700">
-          Tiếp tục thanh toán
+        <button
+          className="w-full bg-blue-700 text-white py-4 rounded-xl text-lg font-bold hover:bg-blue-800"
+        >
+          Tạo đơn hàng
         </button>
 
       </div>
