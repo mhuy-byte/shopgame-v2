@@ -1,3 +1,5 @@
+import OrderForm from "@/components/OrderForm";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100">
@@ -11,17 +13,9 @@ export default function Home() {
           </h1>
 
           <nav className="space-x-6">
-            <a href="/" className="hover:text-yellow-300">
-              Trang chủ
-            </a>
-
-            <a href="/history" className="hover:text-yellow-300">
-              Lịch sử
-            </a>
-
-            <a href="/admin" className="hover:text-yellow-300">
-              Quản trị
-            </a>
+            <a href="/">Trang chủ</a>
+            <a href="/history">Lịch sử</a>
+            <a href="/admin">Quản trị</a>
           </nav>
 
         </div>
@@ -29,7 +23,6 @@ export default function Home() {
 
       {/* Banner */}
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
-
         <div className="max-w-6xl mx-auto text-center">
 
           <h2 className="text-5xl font-bold">
@@ -40,12 +33,7 @@ export default function Home() {
             Nạp game nhanh • Tự động • Uy tín • Giá rẻ
           </p>
 
-          <button className="mt-8 bg-yellow-400 text-black px-8 py-3 rounded-xl font-bold hover:bg-yellow-300">
-            Nạp ngay
-          </button>
-
         </div>
-
       </section>
 
       {/* Danh sách game */}
@@ -57,51 +45,39 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
 
             <h3 className="text-2xl font-bold">
               🔥 Free Fire
             </h3>
 
             <p className="mt-3 text-gray-600">
-              Nạp Kim Cương tự động.
+              Nạp Kim Cương tự động
             </p>
-
-            <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-              Nạp ngay
-            </button>
 
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
 
             <h3 className="text-2xl font-bold">
               ⚔️ Liên Quân Mobile
             </h3>
 
             <p className="mt-3 text-gray-600">
-              Nạp Quân Huy siêu tốc.
+              Nạp Quân Huy siêu tốc
             </p>
-
-            <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-              Nạp ngay
-            </button>
 
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
 
             <h3 className="text-2xl font-bold">
               🎮 PUBG Mobile
             </h3>
 
             <p className="mt-3 text-gray-600">
-              Nạp UC chính hãng.
+              Nạp UC chính hãng
             </p>
-
-            <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-              Nạp ngay
-            </button>
 
           </div>
 
@@ -109,55 +85,24 @@ export default function Home() {
 
       </section>
 
-      {/* Giới thiệu */}
-      <section className="bg-white py-16">
+      {/* FORM ĐẶT ĐƠN */}
+      <section className="max-w-3xl mx-auto px-5 pb-20">
 
-        <div className="max-w-6xl mx-auto text-center px-5">
-
-          <h2 className="text-4xl font-bold">
-            Vì sao chọn chúng tôi?
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 mt-10">
-
-            <div>
-              <h3 className="text-2xl">⚡</h3>
-              <p className="mt-3 font-semibold">
-                Nạp tự động
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl">🔒</h3>
-              <p className="mt-3 font-semibold">
-                Bảo mật tài khoản
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl">💰</h3>
-              <p className="mt-3 font-semibold">
-                Giá rẻ mỗi ngày
-              </p>
-            </div>
-
-          </div>
-
-        </div>
+        <OrderForm />
 
       </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
 
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="text-center">
 
           <h3 className="text-2xl font-bold">
             SHOPGAME
           </h3>
 
           <p className="mt-3 text-gray-400">
-            © 2026 ShopGame. All Rights Reserved.
+            © 2026 ShopGame
           </p>
 
         </div>
