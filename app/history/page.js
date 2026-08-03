@@ -1,57 +1,130 @@
-export default function History() {
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function HistoryPage() {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  async function loadOrders() {
+    try {
+      const res = await fetch("/api/orders");
+      const result = await res.json();
+
+      if (result.success) {
+        setOrders(result.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    loadOrders();
+
+    const interval = setInterval(loadOrders, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  function getStatus(status) {
+    switch (status) {
+      case "pending":
+        return (
+          <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+            Đang chờ
+          </span>
+        );
+
+      case "approved":
+        return (
+          <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+            Đã duyệt
+          </span>
+        );
+
+      case "cancelled":
+        return (
+          <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full">
+            Đã hủy
+          </span>
+        );
+
+      default:
+        return status;
+    }
+  }
+
   return (
-    <main className="min-h-screen bg-gray-100">
+    <main className="min-h-screen bg-gray-100 p-8">
 
-      <header className="bg-blue-700 text-white p-5">
-        <h1 className="text-3xl font-bold text-center">
-          Lịch sử nạp game
+      <div className="max-w-6xl mx-auto">
+
+        <h1 className="text-4xl font-bold mb-8">
+          Lịch sử đơn hàng
         </h1>
-      </header>
 
-      <div className="max-w-5xl mx-auto mt-10 bg-white rounded-xl shadow-lg p-6">
+        {loading ? (
+          <p>Đang tải...</p>
+        ) : orders.length === 0 ? (
+          <div className="bg-white rounded-xl p-8 shadow">
+            Chưa có đơn hàng.
+          </div>
+        ) : (
+          <div className="space-y-5">
 
-        <table className="w-full">
+            {orders.map((order) => (
+              <div
+                key={order.id}
+                className="bg-white rounded-xl shadow p-6"
+              >
+                <div className="grid md:grid-cols-2 gap-4">
 
-          <thead>
+                  <div>
+                    <p>
+                      <b>Mã đơn:</b> #{order.id}
+                    </p>
 
-            <tr className="border-b">
+                    <p>
+                      <b>Game:</b> {order.game}
+                    </p>
 
-              <th className="text-left p-3">Game</th>
-              <th className="text-left p-3">Mệnh giá</th>
-              <th className="text-left p-3">Thời gian</th>
-              <th className="text-left p-3">Trạng thái</th>
+                    <p>
+                      <b>UID:</b> {order.uid}
+                    </p>
 
-            </tr>
+                    <p>
+                      <b>Server:</b> {order.server_id}
+                    </p>
+                  </div>
 
-          </thead>
+                  <div>
+                    <p>
+                      <b>Gói:</b> {order.package_name}
+                    </p>
 
-          <tbody>
+                    <p>
+                      <b>Giá:</b>{" "}
+                      {Number(order.price).toLocaleString("vi-VN")} VNĐ
+                    </p>
 
-            <tr className="border-b">
+                    <p>
+                      <b>SĐT:</b> {order.phone}
+                    </p>
 
-              <td className="p-3">🔥 Free Fire</td>
-              <td className="p-3">100.000đ</td>
-              <td className="p-3">02/08/2026</td>
-              <td className="p-3 text-green-600 font-bold">
-                Thành công
-              </td>
+                    <p className="mt-2">
+                      {getStatus(order.status)}
+                    </p>
+                  </div>
 
-            </tr>
+                </div>
+              </div>
+            ))}
 
-            <tr className="border-b">
-
-              <td className="p-3">⚔️ Liên Quân</td>
-              <td className="p-3">50.000đ</td>
-              <td className="p-3">01/08/2026</td>
-              <td className="p-3 text-yellow-600 font-bold">
-                Đang xử lý
-              </td>
-
-            </tr>
-
-          </tbody>
-
-        </table>
+          </div>
+        )}
 
       </div>
 
